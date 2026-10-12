@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Whole apps, one person — Portfolio</title>
+<meta name="description" content="Independent iOS and full-stack developer. Native Apple apps, the backend behind them, and interactive web — designed, built and shipped by one person.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='8' width='16' height='16' rx='4.5' fill='%23F08A24' transform='rotate(-12 11 16)'/%3E%3Crect x='9' y='7' width='16' height='16' rx='4.5' fill='%232563EB' transform='rotate(2 17 15)'/%3E%3Crect x='14' y='8' width='16' height='16' rx='4.5' fill='%23111114' transform='rotate(14 22 16)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #FFFFFF;
+  --ink: #111114;
+  --ink-2: #4D4D57;
+  --ink-3: #8A8A94;
+  --accent: #111114;
+  --gutter: clamp(16px, 4.2vw, 64px);
+  --display: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
+  --text: "Bricolage Grotesque", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", system-ui, sans-serif;
+  --serif: "Instrument Serif", "Songti SC", "Noto Serif SC", Georgia, serif;
+  --mono: "DM Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ease: cubic-bezier(.2, .75, .15, 1);
+  --spring: cubic-bezier(.34, 1.45, .5, 1);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: var(--page);
+  transition: background-color 1s var(--ease);
+  color: var(--ink);
+  font-family: var(--text);
+  font-variation-settings: "opsz" 16;
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.mono { font-family: var(--mono); font-size: 13px; letter-spacing: .01em; line-height: 1.5; }
+
+/* language switch */
+html[data-lang="en"] [lang="zh-CN"],
+html[data-lang="zh"] [lang="en"] { display: none !important; }
+:lang(zh-CN) { letter-spacing: 0; }
+
+/* ---------- header ---------- */
+.bar {
+  position: fixed; inset: 0 0 auto 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px var(--gutter);
+  background-color: color-mix(in srgb, var(--page) 78%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  transition: background-color 1s var(--ease);
+}
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 15px; font-variation-settings: "opsz" 14, "wdth" 92; }
+.brand svg { width: 28px; height: 28px; transition: transform .5s var(--spring); }
+.brand:hover svg { transform: rotate(-8deg) scale(1.08); }
+.bar nav { display: flex; align-items: center; gap: clamp(14px, 2.6vw, 34px); font-size: 15px; }
+.bar nav a { position: relative; color: var(--ink-2); transition: color .25s; }
+.bar nav a:hover { color: var(--ink); }
+.lang { display: inline-flex; gap: 6px; font-family: var(--mono); font-size: 13px; color: var(--ink-3); }
+.lang span { transition: color .25s; }
+html[data-lang="en"] .lang [data-l="en"], html[data-lang="zh"] .lang [data-l="zh"] { color: var(--ink); }
+.lang i { font-style: normal; color: var(--ink-3); }
+
+/* ---------- reveal ---------- */
+.js .rv { opacity: 0; translate: 0 28px; transition: opacity 1s var(--ease), translate 1.1s var(--ease); transition-delay: calc(var(--d, 0) * 90ms); }
+.js .rv.in { opacity: 1; translate: 0 0; }
+
+/* ---------- hero ---------- */
+.hero {
+  min-height: 100svh;
+  padding: calc(84px + 3vh) var(--gutter) 56px;
+  display: grid; grid-template-rows: auto auto 1fr auto; row-gap: clamp(28px, 4.5vh, 52px);
+}
+.kicker { color: var(--ink-2); margin: 0; display: flex; align-items: center; gap: 10px; }
+.kicker::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #2BB673; box-shadow: 0 0 0 4px rgba(43,182,115,.16); }
+.display {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 640;
+  font-variation-settings: "opsz" 96, "wdth" 78;
+  font-size: clamp(3.1rem, 8.9vw, 9.6rem);
+  line-height: .9;
+  letter-spacing: -0.035em;
+}
+.display:lang(zh-CN), .display [lang="zh-CN"] { letter-spacing: -0.01em; }
+.display .line { display: block; }
+.hero .display { font-size: clamp(3.1rem, 10.4vw, 11.2rem); }
+.hero .display .line:nth-child(2) { padding-left: 1.9em; }
+.hero .display .line:nth-child(3) { text-align: right; }
+.hero .display em {
+  padding: 0 .08em;
+  background: linear-gradient(transparent 63%, #FFE45E 63%, #FFE45E 84%, transparent 84%);
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.js .display .line { opacity: 0; translate: 0 .35em; animation: rise 1.1s var(--ease) forwards; animation-delay: calc(120ms + var(--i) * 110ms); }
+@keyframes rise { to { opacity: 1; translate: 0 0; } }
+.display em {
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-variation-settings: normal; letter-spacing: -0.02em;
+  font-size: 1.07em;
+}
+html[data-lang="zh"] .display { line-height: 1.04; font-weight: 700; }
+/* Chinese has no italic: emphasis switches to Songti instead of a fake slant */
+em.cjk { font-family: "Songti SC", "STSong", "Noto Serif SC", serif !important; font-style: normal !important; font-weight: 600 !important; letter-spacing: 0 !important; font-size: 1em !important; }
+
+/* the fan of real app icons */
+.fan { display: inline-flex; vertical-align: -0.04em; margin-left: .14em; padding: .05em .1em .1em 0; }
+.fan a {
+  position: relative;
+  width: .74em; height: .74em; flex: none;
+  margin-left: -.3em;
+  border-radius: 23%;
+  rotate: var(--r);
+  box-shadow: 0 .05em .14em -.02em rgba(17,17,30,.28), 0 .01em .03em rgba(17,17,30,.14);
+  transition: rotate .6s var(--spring), margin .6s var(--spring), transform .35s var(--spring);
+}
+.fan a:first-child { margin-left: 0; }
+.fan img { width: 100%; height: 100%; border-radius: inherit; object-fit: cover; }
+.js .fan a { opacity: 0; translate: 0 .5em; animation: drop .9s var(--spring) forwards; animation-delay: calc(520ms + var(--k) * 80ms); }
+@keyframes drop { to { opacity: 1; translate: 0 0; } }
+.fan:hover a, .fan:focus-within a { margin-left: .07em; rotate: 0deg; }
+.fan:hover a:first-child, .fan:focus-within a:first-child { margin-left: 0; }
+.fan a:hover, .fan a:focus-visible { transform: translateY(-.07em) scale(1.08); z-index: 2; outline: none; }
+.fan a::after {
+  content: attr(data-name);
+  position: absolute; left: 50%; top: calc(100% + 10px);
+  translate: -50% 4px;
+  font: 500 12px/1 var(--mono); letter-spacing: 0; white-space: nowrap;
+  color: var(--ink-2);
+  opacity: 0; transition: opacity .2s, translate .3s var(--ease);
+  pointer-events: none;
+}
+.fan a:hover::after, .fan a:focus-visible::after { opacity: 1; translate: -50% 0; }
+
+.hero-foot { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; align-items: end; align-self: start; }
+.intro { grid-column: 1 / span 6; margin: 0; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.5; color: var(--ink-2); max-width: 40ch; }
+.intro b { color: var(--ink); font-weight: 600; }
+.cta { grid-column: 8 / span 5; display: flex; align-items: center; justify-content: flex-end; gap: 26px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 17px 26px 17px 28px; border-radius: 999px;
+  background: var(--ink); color: #fff; font-size: 17px; font-weight: 550;
+  transition: transform .35s var(--spring), background-color .3s;
+}
+.btn .arr { display: inline-block; transition: transform .35s var(--spring); }
+.btn:hover { transform: translateY(-2px); }
+.btn:hover .arr { transform: translateX(4px); }
+.tlink { font-size: 16px; color: var(--ink); background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1.5px no-repeat; padding-bottom: 3px; transition: background-size .35s var(--ease); }
+.tlink:hover { background-size: 0 1.5px; background-position: 100% 100%; }
+
+.facts { display: grid; grid-template-columns: repeat(4, 1fr); column-gap: 24px; margin: 0; }
+.facts div { display: flex; flex-direction: column; gap: 6px; }
+.facts dt { font-family: var(--display); font-variation-settings: "opsz" 96, "wdth" 80; font-weight: 560; font-size: clamp(2.6rem, 4.6vw, 4.6rem); line-height: .9; letter-spacing: -0.03em; font-feature-settings: "tnum"; }
+.facts dd { margin: 0; color: var(--ink-2); }
+
+/* ---------- work label ---------- */
+.label { display: flex; justify-content: space-between; align-items: baseline; padding: 0 var(--gutter); margin: 6vh 0 0; color: var(--ink-3); }
+
+/* ---------- project ---------- */
+.proj {
+  display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px;
+  align-items: center;
+  min-height: 108vh;
+  padding: 14vh var(--gutter);
+  scroll-margin-top: 40px;
+}
+.proj .txt { grid-column: 1 / span 5; position: relative; z-index: 2; }
+.proj .stage { grid-column: 6 / span 7; }
+.proj.flip .txt { grid-column: 8 / span 5; grid-row: 1; }
+.proj.flip .stage { grid-column: 1 / span 7; grid-row: 1; }
+
+.eyebrow { margin: 0 0 22px; color: var(--ink-2); display: flex; gap: 14px; align-items: baseline; }
+.eyebrow b { font-weight: 500; color: var(--accent); }
+.pname {
+  margin: 0 0 26px;
+  font-family: var(--display); font-weight: 680;
+  font-variation-settings: "opsz" 96, "wdth" 76;
+  font-size: clamp(3rem, 6.6vw, 7.2rem); line-height: .88; letter-spacing: -0.035em;
+}
+html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
+.pname small { display: block; margin-top: .5em; font-size: .19em; letter-spacing: 0; line-height: 1.2; font-weight: 500; color: var(--ink-2); font-variation-settings: "opsz" 24, "wdth" 100; }
+.lede { margin: 0 0 40px; font-size: clamp(20px, 1.7vw, 25px); line-height: 1.4; letter-spacing: -0.006em; max-width: 30ch; font-variation-settings: "opsz" 24; }
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin: 0 0 36px; }
+.nums div { display: flex; flex-direction: column; gap: 8px; }
+.nums dt { font-family: var(--display); font-weight: 620; font-variation-settings: "opsz" 96, "wdth" 78; font-size: clamp(2.1rem, 3.3vw, 3.4rem); line-height: .9; letter-spacing: -0.03em; color: var(--accent); white-space: nowrap; }
+.nums dd { margin: 0; font-size: 14.5px; line-height: 1.4; color: var(--ink-2); max-width: 17ch; }
+.note { margin: 0 0 22px; color: var(--ink-2); max-width: 44ch; font-size: 17px; }
+.stack { margin: 0; color: var(--ink-2); }
+.go { display: inline-flex; gap: 10px; align-items: center; margin-top: 30px; font-size: 17px; font-weight: 550; color: var(--accent); }
+.go span { transition: transform .35s var(--spring); }
+.go:hover span { transform: translate(3px, -3px); }
+
+/* stages */
+.stage { position: relative; height: min(84vh, 820px); min-height: 560px; }
+.stage > * { position: absolute; will-change: translate; }
+.phone {
+  --w: clamp(220px, 19vw, 300px);
+  margin: 0;
+  width: var(--w); aspect-ratio: 660 / 1434;
+  padding: calc(var(--w) * .03);
+  border-radius: calc(var(--w) * .15);
+  background: #0E0E12;
+  box-shadow:
+    inset 0 0 0 1.5px #3A3A42,
+    0 calc(var(--w) * .18) calc(var(--w) * .3) calc(var(--w) * -.12) rgba(25, 20, 45, .38),
+    0 calc(var(--w) * .05) calc(var(--w) * .08) calc(var(--w) * -.04) rgba(25, 20, 45, .22);
+}
+.phone img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--w) * .122); }
+.appicon { width: clamp(96px, 9vw, 148px); aspect-ratio: 1; border-radius: 23%; box-shadow: 0 30px 50px -22px rgba(25,20,45,.42), 0 6px 14px -6px rgba(25,20,45,.25); }
+.appicon img { width: 100%; height: 100%; border-radius: inherit; }
+
+/* night */
+.st-night .chart { width: min(40vw, 620px); left: 0; top: 50%; margin-top: calc(min(40vw, 620px) / -2); filter: drop-shadow(0 40px 60px rgba(30, 30, 90, .35)); }
+.st-night .chart img { width: 100%; animation: spin 360s linear infinite; }
+.st-night .phone { right: 4%; bottom: 2%; rotate: 5deg; }
+.st-night .appicon { right: 36%; top: 3%; rotate: -9deg; }
+@keyframes spin { to { rotate: 360deg; } }
+
+/* memoclock */
+.st-memo .phone.back { left: 6%; top: 3%; rotate: -7deg; }
+.st-memo .phone.front { left: 38%; top: 13%; rotate: 4deg; }
+.st-memo .appicon { left: 70%; top: 6%; rotate: 10deg; width: clamp(110px, 10.5vw, 170px); }
+
+/* bluebook */
+.st-blue .phone.a { right: 40%; top: 0; }
+.st-blue .phone.b { right: 4%; top: 15%; }
+.st-blue .appicon { right: 72%; bottom: 4%; rotate: -10deg; }
+
+/* tablets (landscape) */
+.tablet {
+  --w: clamp(300px, 31vw, 540px);
+  margin: 0;
+  width: var(--w); aspect-ratio: 1200 / 829;
+  padding: calc(var(--w) * .022);
+  border-radius: calc(var(--w) * .052);
+  background: #0E0E12;
+  box-shadow:
+    inset 0 0 0 1.5px #3A3A42,
+    0 calc(var(--w) * .12) calc(var(--w) * .2) calc(var(--w) * -.08) rgba(25, 20, 45, .34),
+    0 calc(var(--w) * .03) calc(var(--w) * .05) calc(var(--w) * -.02) rgba(25, 20, 45, .2);
+}
+.tablet img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--w) * .032); }
+
+/* noitek: waiting for fresh screenshots */
+.st-noitek .solo { --s: clamp(180px, 19vw, 290px); width: var(--s); left: 50%; top: 50%; margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); rotate: -6deg; }
+
+/* couples */
+.st-couple .tablet.back { --w: clamp(250px, 26vw, 450px); left: 0; top: 8%; rotate: -5deg; }
+.st-couple .tablet.front { right: 0; bottom: 10%; rotate: 3deg; }
+.st-couple .appicon { right: 6%; top: 4%; rotate: 9deg; }
+
+/* manager */
+.st-manager .appicon.big { width: clamp(150px, 15vw, 240px); left: 8%; top: 38%; rotate: -10deg; }
+.st-manager .phone { left: 44%; top: 6%; rotate: 4deg; }
+
+/* client work: no pictures, the words carry it */
+.proj.client { min-height: 0; padding: 18vh var(--gutter); align-items: start; }
+.client .txt { grid-column: 1 / span 6; }
+.client .side { grid-column: 8 / span 5; padding-top: 46px; }
+.client .pname { font-size: clamp(2.8rem, 5.4vw, 6rem); }
+.client .nums { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* ---------- about ---------- */
+.about { padding: 18vh var(--gutter) 16vh; }
+.about h2 { margin: 0 0 9vh; }
+.cols { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: clamp(24px, 4vw, 64px); row-gap: 40px; }
+.cols h3 { margin: 0 0 14px; font-family: var(--mono); font-weight: 500; font-size: 13px; color: var(--ink-3); }
+.cols p { margin: 0; font-size: clamp(18px, 1.45vw, 21px); line-height: 1.45; max-width: 32ch; }
+.how { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; margin-top: 12vh; align-items: end; row-gap: 32px; }
+.how .big { grid-column: 1 / span 8; margin: 0; font-family: var(--display); font-weight: 520; font-variation-settings: "opsz" 48, "wdth" 88; font-size: clamp(1.7rem, 3vw, 2.9rem); line-height: 1.12; letter-spacing: -0.02em; }
+.how .big em { font-family: var(--serif); font-weight: 400; font-style: italic; letter-spacing: -0.01em; font-variation-settings: normal; }
+.how .edu { grid-column: 10 / span 3; margin: 0; color: var(--ink-2); }
+
+/* ---------- contact ---------- */
+.contact { min-height: 100svh; padding: 20vh var(--gutter) 40px; display: flex; flex-direction: column; }
+.contact .display { margin: 22px 0 6vh; }
+.mail {
+  align-self: flex-start;
+  font-family: var(--display); font-weight: 600; font-variation-settings: "opsz" 96, "wdth" 80;
+  font-size: clamp(1.45rem, 9.4vw, 10.5rem); line-height: 1; letter-spacing: -0.035em;
+  background: linear-gradient(var(--ink), var(--ink)) 0 100% / 0 .07em no-repeat;
+  padding-bottom: .08em;
+  transition: background-size .5s var(--ease);
+  overflow-wrap: anywhere;
+}
+.mail:hover { background-size: 100% .07em; }
+.contact .sub { margin: 4vh 0 0; max-width: 46ch; font-size: clamp(18px, 1.5vw, 21px); color: var(--ink-2); }
+.contact .row { display: flex; gap: 26px; align-items: center; margin-top: 36px; flex-wrap: wrap; }
+.foot { margin-top: auto; padding-top: 14vh; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; color: var(--ink-2); }
+
+/* ---------- small screens ---------- */
+@media (max-width: 900px) {
+  body { font-size: 17px; }
+  .bar { padding-top: 14px; padding-bottom: 14px; }
+  .bar nav .nl { display: none; }
+  .hero { padding-top: 120px; row-gap: 34px; }
+  .hero .display { font-size: clamp(2.6rem, 13.4vw, 5.6rem); }
+  .hero .display .line:nth-child(2) { padding-left: .8em; }
+  .hero-foot, .how { grid-template-columns: 1fr; row-gap: 28px; }
+  .intro, .cta, .how .big, .how .edu { grid-column: 1 / -1; }
+  .cta { justify-content: flex-start; }
+  .facts { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+  .proj { grid-template-columns: 1fr; min-height: 0; padding: 12vh var(--gutter) 10vh; row-gap: 48px; }
+  .proj .txt, .proj .stage, .proj.flip .txt, .proj.flip .stage { grid-column: 1 / -1; grid-row: auto; }
+  .proj .stage { order: -1; }
+  .stage { height: 118vw; min-height: 0; max-height: 620px; }
+  .phone { --w: min(46vw, 260px); }
+  .appicon { width: 22vw; }
+  .st-night .chart { width: 92vw; margin-top: -46vw; left: -6vw; }
+  .st-night .phone { right: 2%; }
+  .st-night .appicon { right: auto; left: 2%; top: 2%; }
+  .st-memo .phone.back { left: 0; }
+  .st-memo .phone.front { left: auto; right: 0; }
+  .st-memo .appicon { left: 38%; top: auto; bottom: 0; width: 24vw; }
+  .st-blue .phone.a { right: auto; left: 0; }
+  .st-blue .phone.b { right: 0; }
+  .st-blue .appicon { right: auto; left: 38%; bottom: 2%; }
+  .tablet { --w: 74vw; }
+  .st-couple { height: 92vw; }
+  .st-couple .tablet.back { --w: 60vw; left: 0; top: 2%; }
+  .st-couple .tablet.front { right: 0; bottom: 4%; }
+  .st-couple .appicon { right: 2%; top: 0; width: 18vw; }
+  .st-noitek { height: 64vw; }
+  .st-noitek .solo { --s: 40vw; }
+  .st-manager .appicon.big { width: 30vw; left: 4%; top: 42%; }
+  .st-manager .phone { left: auto; right: 6%; top: 2%; }
+  .client .txt, .client .side { grid-column: 1 / -1; padding-top: 0; }
+  .nums { gap: 16px; }
+  .nums dd { font-size: 13.5px; }
+  .cols { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .rv, .js .display .line, .js .fan a { opacity: 1; translate: none; animation: none; transition: none; }
+  .st-night .chart img { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <a class="brand" href="#top" aria-label="Back to top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="16" height="16" rx="4.5" fill="#F08A24" transform="rotate(-12 11 16)"/><rect x="9" y="7" width="16" height="16" rx="4.5" fill="#2563EB" transform="rotate(2 17 15)"/><rect x="14" y="8" width="16" height="16" rx="4.5" fill="#111114" transform="rotate(14 22 16)"/></svg>
+    <span lang="en">Independent apps</span><span lang="zh-CN">独立 App 开发</span>
+  </a>
+  <nav>
+    <a class="nl" href="#work"><span lang="en">Work</span><span lang="zh-CN">作品</span></a>
+    <a class="nl" href="#about"><span lang="en">About</span><span lang="zh-CN">关于</span></a>
+    <a href="#contact"><span lang="en">Contact</span><span lang="zh-CN">联系</span></a>
+    <button class="lang" id="lang" type="button" aria-label="Switch language / 切换语言"><span data-l="en">EN</span><i>/</i><span data-l="zh">中</span></button>
+  </nav>
+</header>
+
+<main id="top">
+
+<section class="hero" data-bg="#FFFFFF">
+  <p class="kicker mono rv"><span lang="en">Freelance iOS &amp; full-stack developer — open to new projects</span><span lang="zh-CN">自由职业 iOS 与全栈开发 · 正在接新项目</span></p>
+
+  <h1 class="display">
+    <span class="line" style="--i:0"><span lang="en">Whole apps,</span><span lang="zh-CN">完整的 App，</span><span class="fan" aria-label="Projects">
+      <a href="#noitek" data-name="Noitek" style="--r:-14deg;--k:0"><img src="assets/icon-noitek.webp" alt="Noitek"></a>
+      <a href="#night" data-name="The Night You Arrived" style="--r:-8deg;--k:1"><img src="assets/icon-sky.webp" alt="The Night You Arrived"></a>
+      <a href="#couples" data-name="Couples app" style="--r:-2deg;--k:2"><img src="assets/icon-bouquet.webp" alt="Couples app"></a>
+      <a href="#memoclock" data-name="MemoClock" style="--r:4deg;--k:3"><img src="assets/icon-memoclock.webp" alt="MemoClock"></a>
+      <a href="#bluebook" data-name="Academic Bluebook" style="--r:10deg;--k:4"><img src="assets/icon-bluebook.webp" alt="Academic Bluebook"></a>
+      <a href="#manager" data-name="Manager" style="--r:16deg;--k:5"><img src="assets/icon-manager.webp" alt="Manager"></a>
+    </span></span>
+    <span class="line" style="--i:1"><span lang="en">from first sketch</span><span lang="zh-CN">从第一张草图</span></span>
+    <span class="line" style="--i:2"><span lang="en">to the <em>App Store.</em></span><span lang="zh-CN">做到 <em>App Store</em>。</span></span>
+  </h1>
+
+  <div class="hero-foot">
+    <p class="intro rv" style="--d:6">
+      <span lang="en">I design, build and ship complete products: <b>native iPhone, iPad and Mac apps</b>, the <b>backend</b> behind them, and <b>interactive web</b>. Two of my apps are on the App Store, and a client app I built passed review and is live.</span>
+      <span lang="zh-CN">我一个人把产品完整做出来：<b>原生 iPhone、iPad 和 Mac App</b>，背后的<b>服务器</b>，还有<b>可交互的网页</b>。两个自己的 App 已经上架 App Store，做的一个客户 App 也已过审上线。</span>
+    </p>
+    <div class="cta rv" style="--d:7">
+      <a class="btn" href="mailto:wojiaozyh123@gmail.com"><span lang="en">Start a project</span><span lang="zh-CN">聊聊你的项目</span> <span class="arr">→</span></a>
+    </div>
+  </div>
+
+  <dl class="facts">
+    <div class="rv" style="--d:8"><dt>06</dt><dd class="mono"><span lang="en">products of my own</span><span lang="zh-CN">个自己的产品</span></dd></div>
+    <div class="rv" style="--d:9"><dt>02</dt><dd class="mono"><span lang="en">live on the App Store</span><span lang="zh-CN">个已上架 App Store</span></dd></div>
+    <div class="rv" style="--d:10"><dt>01</dt><dd class="mono"><span lang="en">client app shipped</span><span lang="zh-CN">个客户 App 已上线</span></dd></div>
+    <div class="rv" style="--d:11"><dt>04</dt><dd class="mono"><span lang="en">platforms: iPhone, iPad, Mac, web</span><span lang="zh-CN">个平台：iPhone、iPad、Mac、网页</span></dd></div>
+  </dl>
+</section>
+
+<p class="label mono" id="work"><span lang="en">Selected work</span><span lang="zh-CN">作品</span><span>2026</span></p>
+
+<!-- Noitek -->
+<section class="proj" id="noitek" data-bg="#EEEEEB" style="--accent:#111114">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>01</b><span lang="en">iPhone, iPad &amp; Mac · TestFlight beta · 2026</span><span lang="zh-CN">iPhone、iPad、Mac · TestFlight 测试中 · 2026</span></p>
+    <h2 class="pname rv" style="--d:1">Noitek</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">An AI study workspace for university students, on iPhone, iPad and Mac.</span><span lang="zh-CN">给大学生的 AI 学习工作台，iPhone、iPad、Mac 都能用。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>3</dt><dd><span lang="en">platforms from one SwiftUI codebase</span><span lang="zh-CN">个平台，同一套 SwiftUI 代码</span></dd></div>
+      <div><dt>2</dt><dd><span lang="en">AI providers, OpenAI and Anthropic, routed by my backend</span><span lang="zh-CN">家模型服务（OpenAI 和 Anthropic），由我写的后端调度</span></dd></div>
+      <div><dt>0</dt><dd><span lang="en">changes saved before the student approves</span><span lang="zh-CN">未经学生确认就保存的改动</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">Its assistant, Noity, streams its replies and calls tools to read the student’s courses, schedule, notes and sources, then proposes events, notes and quizzes as cards to confirm. I also built the backend: FastAPI and PostgreSQL behind nginx, with accounts, usage metering, push notifications and library sync.</span><span lang="zh-CN">里面的助手 Noity 边想边说，会调用工具读取学生的课程、日程、笔记和资料，再把要新建的日程、笔记和测验做成卡片请学生确认。后端也是我写的：FastAPI + PostgreSQL，跑在 nginx 后面，负责账号、用量计量、推送和资料同步。</span></p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · WidgetKit · FastAPI · PostgreSQL · nginx</p>
+  </div>
+  <div class="stage st-noitek" aria-hidden="true">
+    <div class="appicon solo" data-depth="0.14"><img src="assets/icon-noitek.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- The Night You Arrived -->
+<section class="proj flip" id="night" data-bg="#E8E8FF" style="--accent:#2D3596">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>02</b><span lang="en">Web app · Live · 2026</span><span lang="zh-CN">网页应用 · 已上线 · 2026</span></p>
+    <h2 class="pname rv" style="--d:1"><span lang="en">The Night You Arrived</span><span lang="zh-CN">你来的那晚<small>The Night You Arrived</small></span></h2>
+    <p class="lede rv" style="--d:2"><span lang="en">Enter a birthday and a city, and see the real sky above it at that moment — computed in the browser, drawn in WebGL.</span><span lang="zh-CN">输入生日和出生城市，看那一刻那座城市头顶的真实星空：在浏览器里实时计算，用 WebGL 画出来。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>mag 8</dt><dd><span lang="en">faintest stars drawn, from the HYG catalogue</span><span lang="zh-CN">最暗画到 8 等星，来自 HYG 星表</span></dd></div>
+      <div><dt>4</dt><dd><span lang="en">poster styles, exported at 1440 × 1920</span><span lang="zh-CN">种海报风格，导出 1440 × 1920</span></dd></div>
+      <div><dt>100%</dt><dd><span lang="en">computed in your browser: stars, moon, planets</span><span lang="zh-CN">在浏览器里算：恒星、月相、行星</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">Star trails that rewind, a look-up view that follows the phone’s gyroscope, music generated from the sky, and two people’s skies side by side.</span><span lang="zh-CN">会倒转的星轨、跟着手机陀螺仪抬头看的第一人称视角、由星空生成的音乐，还能把两个人的星空并排比较。</span></p>
+    <p class="stack mono rv" style="--d:5">JavaScript · WebGL · Web Audio · Astronomy Engine · GitHub Actions</p>
+    <a class="go rv" style="--d:6" href="https://wojiaozyh123-hub.github.io/birthsky/" target="_blank" rel="noopener"><span lang="en">Open the live site</span><span lang="zh-CN">打开网站</span> <span>↗</span></a>
+  </div>
+  <div class="stage st-night" aria-hidden="true">
+    <div class="chart" data-depth="-0.10"><img src="assets/sky-chart.webp" alt=""></div>
+    <figure class="phone" data-depth="0.10"><img src="assets/sky-wall.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.22"><img src="assets/icon-sky.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- Couples app -->
+<section class="proj" id="couples" data-bg="#FFE7EE" style="--accent:#D23F69">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>03</b><span lang="en">iPhone &amp; iPad · TestFlight · August 2026</span><span lang="zh-CN">iPhone 与 iPad · TestFlight · 2026 年 8 月</span></p>
+    <h2 class="pname rv" style="--d:1"><span lang="en">Couples companion<small>Private app · name withheld</small></span><span lang="zh-CN">情侣 App<small>私人 App · 不公开名称</small></span></h2>
+    <p class="lede rv" style="--d:2"><span lang="en">A private app for two: partners send each other flowers and letters, set reminders for each other, and keep a shared photo album — each on their own device.</span><span lang="zh-CN">两个人专用的 App：互相送花、写信、给对方设提醒，一起存相册，各用各的设备。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>2</dt><dd><span lang="en">apps from one SwiftUI codebase: iPhone and iPad</span><span lang="zh-CN">个 App 出自同一套 SwiftUI 代码：iPhone 和 iPad</span></dd></div>
+      <div><dt>0</dt><dd><span lang="en">servers of my own — sync runs on CloudKit shared zones</span><span lang="zh-CN">台自建服务器，同步走 CloudKit 私有共享区</span></dd></div>
+      <div><dt>52k</dt><dd><span lang="en">lines of Swift</span><span lang="zh-CN">行 Swift 代码</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">I led feature design and art direction: pastel gradients, floral illustration and airy iPad layouts. Reminders can be set from a plain sentence.</span><span lang="zh-CN">功能设计和美术方向由我主导：粉彩渐变、花束插画、宽松的 iPad 排版。提醒可以直接用一句话来设。</span></p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · CloudKit · TestFlight</p>
+  </div>
+  <div class="stage st-couple" aria-hidden="true">
+    <figure class="tablet back" data-depth="-0.06"><img src="assets/couple-bouquet.webp" alt="" loading="lazy"></figure>
+    <figure class="tablet front" data-depth="0.08"><img src="assets/couple-envelope.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.2"><img src="assets/icon-bouquet.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- MemoClock -->
+<section class="proj flip" id="memoclock" data-bg="#FFEEDD" style="--accent:#E06A0C">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>04</b><span lang="en">iOS · App Store · June 2026</span><span lang="zh-CN">iOS · App Store · 2026 年 6 月</span></p>
+    <h2 class="pname rv" style="--d:1">MemoClock</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">A study app for science students: formulas, handwritten notes, mistakes and concepts, brought back on a review schedule.</span><span lang="zh-CN">给理科生的学习 App：公式、手写笔记、错题和概念，按复习节奏回到你面前。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>No.17</dt><dd><span lang="en">peak rank, China Paid Education chart</span><span lang="zh-CN">中国区付费教育榜最高排名</span></dd></div>
+      <div><dt>300+</dt><dd><span lang="en">downloads and sign-ups by mid-June</span><span lang="zh-CN">6 月中旬的下载和注册</span></dd></div>
+      <div><dt><span lang="en">2 wks</span><span lang="zh-CN">2 周</span></dt><dd><span lang="en">from first idea to App Store launch</span><span lang="zh-CN">从想法到上架</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">I also ran its social account: 12 organic posts brought 515+ likes and saves and 20 beta-test requests, and the comments shaped the next features.</span><span lang="zh-CN">它的社交账号也是我运营的：12 篇笔记带来 515+ 点赞收藏和 20 个内测申请，评论直接决定了接下来做什么。</span></p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · PencilKit · CloudKit · WidgetKit</p>
+  </div>
+  <div class="stage st-memo" aria-hidden="true">
+    <figure class="phone back" data-depth="-0.06"><img src="assets/memoclock-review.webp" alt="" loading="lazy"></figure>
+    <figure class="phone front" data-depth="0.08"><img src="assets/memoclock-home.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.2"><img src="assets/icon-memoclock.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- Academic Bluebook -->
+<section class="proj" id="bluebook" data-bg="#E1ECFF" style="--accent:#1D59D6">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>05</b><span lang="en">iOS · App Store · October 2026</span><span lang="zh-CN">iOS · App Store · 2026 年 10 月</span></p>
+    <h2 class="pname rv" style="--d:1">Academic Bluebook</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">An academic English vocabulary app that takes a learner from word, to example, to review — in one flow.</span><span lang="zh-CN">学术英语词汇 App：从单词到例句再到复习，一条线走完。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>2,100</dt><dd><span lang="en">academic word senses</span><span lang="zh-CN">个学术词义</span></dd></div>
+      <div><dt>1,500</dt><dd><span lang="en">with detailed pages and example sentences</span><span lang="zh-CN">个词义有详解页和例句</span></dd></div>
+      <div><dt>FSRS</dt><dd><span lang="en">spaced-repetition review and quizzes</span><span lang="zh-CN">间隔重复复习和测验</span></dd></div>
+    </dl>
+    <p class="stack mono rv" style="--d:5">Swift 6 · SwiftUI · SwiftData</p>
+  </div>
+  <div class="stage st-blue" aria-hidden="true">
+    <figure class="phone a" data-depth="-0.05"><img src="assets/bluebook-dict.webp" alt="" loading="lazy"></figure>
+    <figure class="phone b" data-depth="0.09"><img src="assets/bluebook-word.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.2"><img src="assets/icon-bluebook.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- Manager -->
+<section class="proj flip" id="manager" data-bg="#DDF1E9" style="--accent:#14705A">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>06</b><span lang="en">iPhone &amp; iPad · 2026 · not released yet</span><span lang="zh-CN">iPhone 与 iPad · 2026 · 尚未上架</span></p>
+    <h2 class="pname rv" style="--d:1">Manager</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">Schedule, class timetable and personal finances in one app, built on one data model.</span><span lang="zh-CN">日程、课表和个人财务放进同一个 App，用同一套数据模型。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>3</dt><dd><span lang="en">areas in one data model: time, classes, money</span><span lang="zh-CN">块内容共用一套数据：时间、课程、钱</span></dd></div>
+      <div><dt>2</dt><dd><span lang="en">languages, English and Chinese</span><span lang="zh-CN">种语言：英文和中文</span></dd></div>
+      <div><dt>50k</dt><dd><span lang="en">lines of Swift</span><span lang="zh-CN">行 Swift 代码</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">Accounts, recurring income and expenses, savings goals, plan comparison, exchange-rate trends and reminders.</span><span lang="zh-CN">账户、周期性收支、储蓄目标、方案对比、汇率走势和提醒。</span></p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI</p>
+  </div>
+  <div class="stage st-manager" aria-hidden="true">
+    <div class="appicon big" data-depth="-0.08"><img src="assets/icon-manager.webp" alt="" loading="lazy"></div>
+    <figure class="phone" data-depth="0.08"><img src="assets/manager-welcome.webp" alt="" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- Client work -->
+<section class="proj client" id="client" data-bg="#EFF6D6" style="--accent:#4C7400">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>07</b><span lang="en">Client work · iOS · App Store · 2026</span><span lang="zh-CN">客户项目 · iOS · App Store · 2026</span></p>
+    <h2 class="pname rv" style="--d:1"><span lang="en">An exam-recall app<small>Confidential client · name withheld</small></span><span lang="zh-CN">考试回忆练习 App<small>保密客户 · 不公开名称</small></span></h2>
+    <p class="lede rv" style="--d:2"><span lang="en">Students answer by voice or by typing, get feedback, and review dense subject content on a spaced-repetition schedule. It passed App Store review and is live.</span><span lang="zh-CN">学生用语音或打字作答，得到反馈，再按间隔重复复习大量考点。已通过 App Store 审核上线。</span></p>
+  </div>
+  <div class="side">
+    <dl class="nums rv" style="--d:3">
+      <div><dt>68k</dt><dd><span lang="en">lines of Flutter (Dart)</span><span lang="zh-CN">行 Flutter（Dart）代码</span></dd></div>
+      <div><dt>3</dt><dd><span lang="en">parts: app, API and admin console</span><span lang="zh-CN">个部分：App、接口服务、管理后台</span></dd></div>
+      <div><dt><span lang="en">Live</span><span lang="zh-CN">上线</span></dt><dd><span lang="en">passed App Store review</span><span lang="zh-CN">已通过 App Store 审核</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">I turned the client’s requirements into the product, led UX and UI, and built it: the Flutter app, plus a TypeScript backend with an admin console, Sign in with Apple and in-app purchase verification, deployed with Docker on Tencent Cloud.</span><span lang="zh-CN">我把客户的需求变成产品，主导交互和界面，并把它做出来：Flutter 写的 App，加上 TypeScript 后端，带管理后台、Apple 登录和内购校验，用 Docker 部署在腾讯云。</span></p>
+    <p class="stack mono rv" style="--d:5">Flutter · Dart · TypeScript · Fastify · Prisma · PostgreSQL · Docker</p>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about" data-bg="#FFFFFF">
+  <h2 class="display rv"><span lang="en">One person,<br>every <em>layer.</em></span><span lang="zh-CN">一个人，<br>从界面做到<em class="cjk">服务器</em>。</span></h2>
+  <div class="cols">
+    <div class="rv" style="--d:1">
+      <h3><span lang="en">Apps</span><span lang="zh-CN">App</span></h3>
+      <p><span lang="en">Swift and SwiftUI for iPhone, iPad and Mac — SwiftData, CloudKit, PencilKit, widgets, push notifications, Sign in with Apple, through to TestFlight and the App Store. Flutter when it has to run everywhere.</span><span lang="zh-CN">用 Swift 和 SwiftUI 做 iPhone、iPad、Mac：SwiftData、CloudKit、PencilKit、小组件、推送、Apple 登录，一直做到 TestFlight 和上架。要跨平台时用 Flutter。</span></p>
+    </div>
+    <div class="rv" style="--d:2">
+      <h3><span lang="en">Backend &amp; AI</span><span lang="zh-CN">后端与 AI</span></h3>
+      <p><span lang="en">Python with FastAPI or TypeScript with Fastify, on PostgreSQL, deployed with Docker and nginx. AI assistants that call tools, on the OpenAI and Anthropic APIs.</span><span lang="zh-CN">Python + FastAPI 或 TypeScript + Fastify，数据库用 PostgreSQL，用 Docker 和 nginx 部署。会调用工具的 AI 助手，接 OpenAI 和 Anthropic 的接口。</span></p>
+    </div>
+    <div class="rv" style="--d:3">
+      <h3><span lang="en">Web &amp; design</span><span lang="zh-CN">网页与设计</span></h3>
+      <p><span lang="en">WebGL, Canvas and Web Audio for the web. UI, app icons and App Store screenshots in Figma, so a first version doesn’t need a separate designer.</span><span lang="zh-CN">网页用 WebGL、Canvas 和 Web Audio。界面、App 图标和商店截图在 Figma 里做，第一版不用另外找设计师。</span></p>
+    </div>
+  </div>
+  <div class="how">
+    <p class="big rv"><span lang="en">I ship in <em>small steps</em> you can try, with clear written updates along the way.</span><span lang="zh-CN">我会<em class="cjk">一小步一小步</em>交付，每一步你都能上手试，过程中写清楚的进度说明。</span></p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact" data-bg="#FFE45E">
+  <p class="mono rv" style="color:var(--ink-2)"><span lang="en">Contact</span><span lang="zh-CN">联系</span></p>
+  <h2 class="display rv" style="--d:1"><span lang="en">Have an app<br>in <em>mind?</em></span><span lang="zh-CN">有想做的<br><em>App</em> 吗？</span></h2>
+  <a class="mail rv" style="--d:2" href="mailto:wojiaozyh123@gmail.com">wojiaozyh123@gmail.com</a>
+  <p class="sub rv" style="--d:3"><span lang="en">Send me a short description of what you want to build. I’ll reply with how I’d approach it and a realistic timeline.</span><span lang="zh-CN">发我一段简短的描述，说说你想做什么。我会回复我打算怎么做，以及实际需要多久。</span></p>
+  <div class="row rv" style="--d:4">
+    <a class="btn" href="mailto:wojiaozyh123@gmail.com"><span lang="en">Email me</span><span lang="zh-CN">发邮件</span> <span class="arr">→</span></a>
+  </div>
+  <footer class="foot mono">
+    <span lang="en">© 2026 · Designed and built by me</span><span lang="zh-CN">© 2026 · 由我设计并制作</span>
+    <a href="#top"><span lang="en">Back to top ↑</span><span lang="zh-CN">回到顶部 ↑</span></a>
+  </footer>
+</section>
+
+</main>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+
+  // language: English by default, remembered per visitor
+  const setLang = (l) => {
+    root.dataset.lang = l;
+    root.lang = l === 'zh' ? 'zh-CN' : 'en';
+    try { localStorage.setItem('lang', l); } catch (e) {}
+  };
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  setLang(saved === 'zh' ? 'zh' : 'en');
+  document.getElementById('lang').addEventListener('click', () => setLang(root.dataset.lang === 'en' ? 'zh' : 'en'));
+
+  // the page takes on the colour of whichever section crosses the middle of the screen
+  const tint = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) root.style.setProperty('--page', e.target.dataset.bg);
+  }, { rootMargin: '-49% 0px -49% 0px' });
+  document.querySelectorAll('[data-bg]').forEach((s) => tint.observe(s));
+
+  // reveal on scroll
+  const reveal = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); reveal.unobserve(e.target); }
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  document.querySelectorAll('.rv').forEach((el) => reveal.observe(el));
+
+  // depth: each layer of a stage drifts at its own speed
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const layers = [...document.querySelectorAll('[data-depth]')].map((el) => ({ el, depth: parseFloat(el.dataset.depth), sec: el.closest('section') }));
+  let queued = false;
+  const update = () => {
+    queued = false;
+    const mid = innerHeight / 2;
+    for (const { el, depth, sec } of layers) {
+      const r = sec.getBoundingClientRect();
+      if (r.bottom < -200 || r.top > innerHeight + 200) continue;
+      el.style.translate = `0 ${(-(r.top + r.height / 2 - mid) * depth).toFixed(1)}px`;
+    }
+  };
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+  addEventListener('resize', update);
+  update();
+})();
+</script>
+</body>
+</html>
