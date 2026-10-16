@@ -225,10 +225,11 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 .st-night .appicon { right: 36%; top: 3%; rotate: -9deg; }
 @keyframes spin { to { rotate: 360deg; } }
 
-/* memoclock */
-.st-memo .phone.back { left: 6%; top: 3%; rotate: -7deg; }
-.st-memo .phone.front { left: 38%; top: 13%; rotate: 4deg; }
-.st-memo .appicon { left: 70%; top: 6%; rotate: 10deg; width: clamp(110px, 10.5vw, 170px); }
+/* memoclock: 2.0 on iPad, 4:3 landscape shots */
+.st-memo .tablet { aspect-ratio: 4 / 3; }
+.st-memo .tablet.back { --w: clamp(250px, 26vw, 450px); right: 0; top: 6%; rotate: 4deg; }
+.st-memo .tablet.front { left: 0; bottom: 12%; rotate: -3deg; }
+.st-memo .appicon { left: 6%; top: 4%; rotate: -9deg; width: clamp(110px, 10.5vw, 170px); }
 
 /* bluebook */
 .st-blue .phone.a { right: 40%; top: 0; }
@@ -318,9 +319,10 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
   .st-night .chart { width: 92vw; margin-top: -46vw; left: -6vw; }
   .st-night .phone { right: 2%; }
   .st-night .appicon { right: auto; left: 2%; top: 2%; }
-  .st-memo .phone.back { left: 0; }
-  .st-memo .phone.front { left: auto; right: 0; }
-  .st-memo .appicon { left: 38%; top: auto; bottom: 0; width: 24vw; }
+  .st-memo { height: 92vw; }
+  .st-memo .tablet.back { --w: 60vw; top: 2%; }
+  .st-memo .tablet.front { bottom: 4%; }
+  .st-memo .appicon { left: 2%; top: 0; width: 18vw; }
   .st-blue .phone.a { right: auto; left: 0; }
   .st-blue .phone.b { right: 0; }
   .st-blue .appicon { right: auto; left: 38%; bottom: 2%; }
@@ -463,20 +465,20 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 <!-- MemoClock -->
 <section class="proj flip" id="memoclock" data-bg="#FFEEDD" style="--accent:#E06A0C">
   <div class="txt">
-    <p class="eyebrow mono rv"><b>04</b><span lang="en">iOS · App Store · June 2026</span><span lang="zh-CN">iOS · App Store · 2026 年 6 月</span></p>
+    <p class="eyebrow mono rv"><b>04</b><span lang="en">iPad &amp; iPhone · App Store · June 2026</span><span lang="zh-CN">iPad 与 iPhone · App Store · 2026 年 6 月</span></p>
     <h2 class="pname rv" style="--d:1">MemoClock</h2>
-    <p class="lede rv" style="--d:2"><span lang="en">A study app for science students: formulas, handwritten notes, mistakes and concepts, brought back on a review schedule.</span><span lang="zh-CN">给理科生的学习 App：公式、手写笔记、错题和概念，按复习节奏回到你面前。</span></p>
+    <p class="lede rv" style="--d:2"><span lang="en">A study app for science students: build your own Today page from widgets, write with Apple Pencil, and frame anything on the page to make a review card.</span><span lang="zh-CN">给理科生的学习 App：用小组件拼出自己的今天页，用 Apple Pencil 记笔记，框住一处就成了一张复习卡。</span></p>
     <dl class="nums rv" style="--d:3">
       <div><dt>No.17</dt><dd><span lang="en">peak rank, China Paid Education chart</span><span lang="zh-CN">中国区付费教育榜最高排名</span></dd></div>
       <div><dt>300+</dt><dd><span lang="en">downloads and sign-ups by mid-June</span><span lang="zh-CN">6 月中旬的下载和注册</span></dd></div>
       <div><dt><span lang="en">2 wks</span><span lang="zh-CN">2 周</span></dt><dd><span lang="en">from first idea to App Store launch</span><span lang="zh-CN">从想法到上架</span></dd></div>
     </dl>
     <p class="note rv" style="--d:4"><span lang="en">I also ran its social account: 12 organic posts brought 515+ likes and saves and 20 beta-test requests, and the comments shaped the next features.</span><span lang="zh-CN">它的社交账号也是我运营的：12 篇笔记带来 515+ 点赞收藏和 20 个内测申请，评论直接决定了接下来做什么。</span></p>
-    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · PencilKit · CloudKit · WidgetKit</p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · SwiftData · PencilKit · CloudKit · WidgetKit</p>
   </div>
   <div class="stage st-memo" aria-hidden="true">
-    <figure class="phone back" data-depth="-0.06"><img src="assets/memoclock-review.webp" alt="" loading="lazy"></figure>
-    <figure class="phone front" data-depth="0.08"><img src="assets/memoclock-home.webp" alt="" loading="lazy"></figure>
+    <figure class="tablet back" data-depth="-0.06"><img src="assets/memoclock-desk.webp" alt="" loading="lazy"></figure>
+    <figure class="tablet front" data-depth="0.08"><img src="assets/memoclock-today.webp" alt="" loading="lazy"></figure>
     <div class="appicon" data-depth="0.2"><img src="assets/icon-memoclock.webp" alt="" loading="lazy"></div>
   </div>
 </section>
