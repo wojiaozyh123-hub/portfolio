@@ -251,8 +251,12 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 }
 .tablet img { width: 100%; height: 100%; object-fit: cover; border-radius: calc(var(--w) * .032); }
 
-/* noitek: waiting for fresh screenshots */
-.st-noitek .solo { --s: clamp(180px, 19vw, 290px); width: var(--s); left: 50%; top: 50%; margin: calc(var(--s) / -2) 0 0 calc(var(--s) / -2); rotate: -6deg; }
+/* noitek: Mac windows, captured with their own rounded corners */
+.mac { --w: clamp(340px, 36vw, 620px); margin: 0; width: var(--w); filter: drop-shadow(0 calc(var(--w) * .07) calc(var(--w) * .07) rgba(25, 20, 45, .26)); }
+.mac img { display: block; width: 100%; height: auto; }
+.st-noitek .mac.back { right: 0; top: 8%; rotate: 2deg; }
+.st-noitek .mac.front { left: 4%; bottom: 14%; rotate: -2deg; }
+.st-noitek .appicon { right: 6%; bottom: 4%; rotate: 8deg; }
 
 /* couples */
 .st-couple .tablet.back { --w: clamp(250px, 26vw, 450px); left: 0; top: 8%; rotate: -5deg; }
@@ -331,8 +335,11 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
   .st-couple .tablet.back { --w: 60vw; left: 0; top: 2%; }
   .st-couple .tablet.front { right: 0; bottom: 4%; }
   .st-couple .appicon { right: 2%; top: 0; width: 18vw; }
-  .st-noitek { height: 64vw; }
-  .st-noitek .solo { --s: 40vw; }
+  .st-noitek { height: 92vw; max-height: 620px; }
+  .mac { --w: 78vw; }
+  .st-noitek .mac.back { top: 2%; }
+  .st-noitek .mac.front { bottom: 10%; }
+  .st-noitek .appicon { right: 2%; bottom: 0; width: 18vw; }
   .st-manager .appicon.big { width: 30vw; left: 4%; top: 42%; }
   .st-manager .phone { left: auto; right: 6%; top: 2%; }
   .client .txt, .client .side { grid-column: 1 / -1; padding-top: 0; }
@@ -369,10 +376,10 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 
   <h1 class="display">
     <span class="line" style="--i:0"><span lang="en">Whole apps,</span><span lang="zh-CN">完整的 App，</span><span class="fan" aria-label="Projects">
-      <a href="#noitek" data-name="Noitek" style="--r:-14deg;--k:0"><img src="assets/icon-noitek.webp" alt="Noitek"></a>
-      <a href="#night" data-name="The Night You Arrived" style="--r:-8deg;--k:1"><img src="assets/icon-sky.webp" alt="The Night You Arrived"></a>
-      <a href="#couples" data-name="Couples app" style="--r:-2deg;--k:2"><img src="assets/icon-bouquet.webp" alt="Couples app"></a>
-      <a href="#memoclock" data-name="MemoClock" style="--r:4deg;--k:3"><img src="assets/icon-memoclock.webp" alt="MemoClock"></a>
+      <a href="#memoclock" data-name="MemoClock" style="--r:-14deg;--k:0"><img src="assets/icon-memoclock.webp" alt="MemoClock"></a>
+      <a href="#noitek" data-name="Noitek" style="--r:-8deg;--k:1"><img src="assets/icon-noitek.webp" alt="Noitek"></a>
+      <a href="#night" data-name="The Night You Arrived" style="--r:-2deg;--k:2"><img src="assets/icon-sky.webp" alt="The Night You Arrived"></a>
+      <a href="#couples" data-name="Couples app" style="--r:4deg;--k:3"><img src="assets/icon-bouquet.webp" alt="Couples app"></a>
       <a href="#bluebook" data-name="Academic Bluebook" style="--r:10deg;--k:4"><img src="assets/icon-bluebook.webp" alt="Academic Bluebook"></a>
       <a href="#manager" data-name="Manager" style="--r:16deg;--k:5"><img src="assets/icon-manager.webp" alt="Manager"></a>
     </span></span>
@@ -400,29 +407,52 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 
 <p class="label mono" id="work"><span lang="en">Selected work</span><span lang="zh-CN">作品</span><span>2026</span></p>
 
-<!-- Noitek -->
-<section class="proj" id="noitek" data-bg="#EEEEEB" style="--accent:#111114">
+<!-- MemoClock -->
+<section class="proj" id="memoclock" data-bg="#FFEEDD" style="--accent:#E06A0C">
   <div class="txt">
-    <p class="eyebrow mono rv"><b>01</b><span lang="en">iPhone, iPad &amp; Mac · TestFlight beta · 2026</span><span lang="zh-CN">iPhone、iPad、Mac · TestFlight 测试中 · 2026</span></p>
-    <h2 class="pname rv" style="--d:1">Noitek</h2>
-    <p class="lede rv" style="--d:2"><span lang="en">An AI study workspace for university students, on iPhone, iPad and Mac.</span><span lang="zh-CN">给大学生的 AI 学习工作台，iPhone、iPad、Mac 都能用。</span></p>
+    <p class="eyebrow mono rv"><b>01</b><span lang="en">iPad &amp; iPhone · App Store · 2.0, October 2026</span><span lang="zh-CN">iPad 与 iPhone · App Store · 2.0，2026 年 10 月</span></p>
+    <h2 class="pname rv" style="--d:1">MemoClock</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">A study app for science students: build your own Today page from widgets, write with Apple Pencil, and frame anything on the page to make a review card.</span><span lang="zh-CN">给理科生的学习 App：用小组件拼出自己的今天页，用 Apple Pencil 记笔记，框住一处就成了一张复习卡。</span></p>
     <dl class="nums rv" style="--d:3">
-      <div><dt>3</dt><dd><span lang="en">platforms from one SwiftUI codebase</span><span lang="zh-CN">个平台，同一套 SwiftUI 代码</span></dd></div>
-      <div><dt>2</dt><dd><span lang="en">AI providers, OpenAI and Anthropic, routed by my backend</span><span lang="zh-CN">家模型服务（OpenAI 和 Anthropic），由我写的后端调度</span></dd></div>
-      <div><dt>0</dt><dd><span lang="en">changes saved before the student approves</span><span lang="zh-CN">未经学生确认就保存的改动</span></dd></div>
+      <div><dt>No.17</dt><dd><span lang="en">peak rank, China Paid Education chart</span><span lang="zh-CN">中国区付费教育榜最高排名</span></dd></div>
+      <div><dt>300+</dt><dd><span lang="en">downloads and sign-ups by mid-June</span><span lang="zh-CN">6 月中旬的下载和注册</span></dd></div>
+      <div><dt><span lang="en">2 wks</span><span lang="zh-CN">2 周</span></dt><dd><span lang="en">from first idea to App Store launch</span><span lang="zh-CN">从想法到上架</span></dd></div>
     </dl>
-    <p class="note rv" style="--d:4"><span lang="en">Its assistant, Noity, streams its replies and calls tools to read the student’s courses, schedule, notes and sources, then proposes events, notes and quizzes as cards to confirm. I also built the backend: FastAPI and PostgreSQL behind nginx, with accounts, usage metering, push notifications and library sync.</span><span lang="zh-CN">里面的助手 Noity 边想边说，会调用工具读取学生的课程、日程、笔记和资料，再把要新建的日程、笔记和测验做成卡片请学生确认。后端也是我写的：FastAPI + PostgreSQL，跑在 nginx 后面，负责账号、用量计量、推送和资料同步。</span></p>
-    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · WidgetKit · FastAPI · PostgreSQL · nginx</p>
+    <p class="note rv" style="--d:4"><span lang="en">I also ran its social account: 12 organic posts brought 515+ likes and saves and 20 beta-test requests, and the comments shaped the next features.</span><span lang="zh-CN">它的社交账号也是我运营的：12 篇笔记带来 515+ 点赞收藏和 20 个内测申请，评论直接决定了接下来做什么。</span></p>
+    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · SwiftData · PencilKit · CloudKit · WidgetKit</p>
+  </div>
+  <div class="stage st-memo" aria-hidden="true">
+    <figure class="tablet back" data-depth="-0.06"><img lang="en" src="assets/memoclock-desk-en.webp" alt="" loading="lazy"><img lang="zh-CN" src="assets/memoclock-desk.webp" alt="" loading="lazy"></figure>
+    <figure class="tablet front" data-depth="0.08"><img lang="en" src="assets/memoclock-today-en.webp" alt="" loading="lazy"><img lang="zh-CN" src="assets/memoclock-today.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.2"><img src="assets/icon-memoclock.webp" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- Noitek -->
+<section class="proj flip" id="noitek" data-bg="#EEEEEB" style="--accent:#111114">
+  <div class="txt">
+    <p class="eyebrow mono rv"><b>02</b><span lang="en">Mac · In development · 2026</span><span lang="zh-CN">Mac · 开发中 · 2026</span></p>
+    <h2 class="pname rv" style="--d:1">Noitek</h2>
+    <p class="lede rv" style="--d:2"><span lang="en">An AI study workspace for university students: one workflow from the course website to the exam.</span><span lang="zh-CN">给大学生的 AI 学习工作台：从课程网站到考试，一条工作流走完。</span></p>
+    <dl class="nums rv" style="--d:3">
+      <div><dt>768</dt><dd><span lang="en">-dimension embeddings, computed on the Mac</span><span lang="zh-CN">维向量，在 Mac 本机计算</span></dd></div>
+      <div><dt>2</dt><dd><span lang="en">searches fused per question: vector and full-text</span><span lang="zh-CN">路检索合并：向量 + 全文</span></dd></div>
+      <div><dt>28</dt><dd><span lang="en">tools the assistant runs on the Mac</span><span lang="zh-CN">个工具，助手在 Mac 本机执行</span></dd></div>
+    </dl>
+    <p class="note rv" style="--d:4"><span lang="en">Course site → course workspace → lecture transcript → deadlines in the schedule → reminders. Answers come only from the student’s own files, and every citation is checked against its source.</span><span lang="zh-CN">课程网站 → 课程工作区 → 课堂转写 → 截止日期进日程 → 提醒。回答只取自学生自己的资料，每条引用都对照原文核对。</span></p>
+    <p class="stack mono rv" style="--d:5">SwiftUI · ONNX Runtime · USearch · SQLite FTS5 · FastAPI · PostgreSQL · Claude</p>
   </div>
   <div class="stage st-noitek" aria-hidden="true">
-    <div class="appicon solo" data-depth="0.14"><img src="assets/icon-noitek.webp" alt="" loading="lazy"></div>
+    <figure class="mac back" data-depth="-0.06"><img src="assets/noitek-library.webp" alt="" loading="lazy"></figure>
+    <figure class="mac front" data-depth="0.08"><img src="assets/noitek-answer.webp" alt="" loading="lazy"></figure>
+    <div class="appicon" data-depth="0.2"><img src="assets/icon-noitek.webp" alt="" loading="lazy"></div>
   </div>
 </section>
 
 <!-- The Night You Arrived -->
-<section class="proj flip" id="night" data-bg="#E8E8FF" style="--accent:#2D3596">
+<section class="proj" id="night" data-bg="#E8E8FF" style="--accent:#2D3596">
   <div class="txt">
-    <p class="eyebrow mono rv"><b>02</b><span lang="en">Web app · Live · 2026</span><span lang="zh-CN">网页应用 · 已上线 · 2026</span></p>
+    <p class="eyebrow mono rv"><b>03</b><span lang="en">Web app · Live · 2026</span><span lang="zh-CN">网页应用 · 已上线 · 2026</span></p>
     <h2 class="pname rv" style="--d:1"><span lang="en">The Night You Arrived</span><span lang="zh-CN">你来的那晚<small>The Night You Arrived</small></span></h2>
     <p class="lede rv" style="--d:2"><span lang="en">Enter a birthday and a city, and see the real sky above it at that moment — computed in the browser, drawn in WebGL.</span><span lang="zh-CN">输入生日和出生城市，看那一刻那座城市头顶的真实星空：在浏览器里实时计算，用 WebGL 画出来。</span></p>
     <dl class="nums rv" style="--d:3">
@@ -442,9 +472,9 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
 </section>
 
 <!-- Couples app -->
-<section class="proj" id="couples" data-bg="#FFE7EE" style="--accent:#D23F69">
+<section class="proj flip" id="couples" data-bg="#FFE7EE" style="--accent:#D23F69">
   <div class="txt">
-    <p class="eyebrow mono rv"><b>03</b><span lang="en">iPhone &amp; iPad · TestFlight · August 2026</span><span lang="zh-CN">iPhone 与 iPad · TestFlight · 2026 年 8 月</span></p>
+    <p class="eyebrow mono rv"><b>04</b><span lang="en">iPhone &amp; iPad · TestFlight · August 2026</span><span lang="zh-CN">iPhone 与 iPad · TestFlight · 2026 年 8 月</span></p>
     <h2 class="pname rv" style="--d:1"><span lang="en">Couples companion<small>Private app · name withheld</small></span><span lang="zh-CN">情侣 App<small>私人 App · 不公开名称</small></span></h2>
     <p class="lede rv" style="--d:2"><span lang="en">A private app for two: partners send each other flowers and letters, set reminders for each other, and keep a shared photo album — each on their own device.</span><span lang="zh-CN">两个人专用的 App：互相送花、写信、给对方设提醒，一起存相册，各用各的设备。</span></p>
     <dl class="nums rv" style="--d:3">
@@ -459,27 +489,6 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
     <figure class="tablet back" data-depth="-0.06"><img src="assets/couple-bouquet.webp" alt="" loading="lazy"></figure>
     <figure class="tablet front" data-depth="0.08"><img src="assets/couple-envelope.webp" alt="" loading="lazy"></figure>
     <div class="appicon" data-depth="0.2"><img src="assets/icon-bouquet.webp" alt="" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- MemoClock -->
-<section class="proj flip" id="memoclock" data-bg="#FFEEDD" style="--accent:#E06A0C">
-  <div class="txt">
-    <p class="eyebrow mono rv"><b>04</b><span lang="en">iPad &amp; iPhone · App Store · June 2026</span><span lang="zh-CN">iPad 与 iPhone · App Store · 2026 年 6 月</span></p>
-    <h2 class="pname rv" style="--d:1">MemoClock</h2>
-    <p class="lede rv" style="--d:2"><span lang="en">A study app for science students: build your own Today page from widgets, write with Apple Pencil, and frame anything on the page to make a review card.</span><span lang="zh-CN">给理科生的学习 App：用小组件拼出自己的今天页，用 Apple Pencil 记笔记，框住一处就成了一张复习卡。</span></p>
-    <dl class="nums rv" style="--d:3">
-      <div><dt>No.17</dt><dd><span lang="en">peak rank, China Paid Education chart</span><span lang="zh-CN">中国区付费教育榜最高排名</span></dd></div>
-      <div><dt>300+</dt><dd><span lang="en">downloads and sign-ups by mid-June</span><span lang="zh-CN">6 月中旬的下载和注册</span></dd></div>
-      <div><dt><span lang="en">2 wks</span><span lang="zh-CN">2 周</span></dt><dd><span lang="en">from first idea to App Store launch</span><span lang="zh-CN">从想法到上架</span></dd></div>
-    </dl>
-    <p class="note rv" style="--d:4"><span lang="en">I also ran its social account: 12 organic posts brought 515+ likes and saves and 20 beta-test requests, and the comments shaped the next features.</span><span lang="zh-CN">它的社交账号也是我运营的：12 篇笔记带来 515+ 点赞收藏和 20 个内测申请，评论直接决定了接下来做什么。</span></p>
-    <p class="stack mono rv" style="--d:5">Swift · SwiftUI · SwiftData · PencilKit · CloudKit · WidgetKit</p>
-  </div>
-  <div class="stage st-memo" aria-hidden="true">
-    <figure class="tablet back" data-depth="-0.06"><img lang="en" src="assets/memoclock-desk-en.webp" alt="" loading="lazy"><img lang="zh-CN" src="assets/memoclock-desk.webp" alt="" loading="lazy"></figure>
-    <figure class="tablet front" data-depth="0.08"><img lang="en" src="assets/memoclock-today-en.webp" alt="" loading="lazy"><img lang="zh-CN" src="assets/memoclock-today.webp" alt="" loading="lazy"></figure>
-    <div class="appicon" data-depth="0.2"><img src="assets/icon-memoclock.webp" alt="" loading="lazy"></div>
   </div>
 </section>
 
@@ -551,7 +560,7 @@ html[data-lang="zh"] .pname { line-height: 1.02; letter-spacing: -0.01em; }
     </div>
     <div class="rv" style="--d:2">
       <h3><span lang="en">Backend &amp; AI</span><span lang="zh-CN">后端与 AI</span></h3>
-      <p><span lang="en">Python with FastAPI or TypeScript with Fastify, on PostgreSQL, deployed with Docker and nginx. AI assistants that call tools, on the OpenAI and Anthropic APIs.</span><span lang="zh-CN">Python + FastAPI 或 TypeScript + Fastify，数据库用 PostgreSQL，用 Docker 和 nginx 部署。会调用工具的 AI 助手，接 OpenAI 和 Anthropic 的接口。</span></p>
+      <p><span lang="en">Python with FastAPI or TypeScript with Fastify, on PostgreSQL, deployed with Docker and nginx. AI assistants that call tools, and RAG over your own documents, on the OpenAI and Anthropic APIs.</span><span lang="zh-CN">Python + FastAPI 或 TypeScript + Fastify，数据库用 PostgreSQL，用 Docker 和 nginx 部署。会调用工具的 AI 助手和基于你自己文档的 RAG 检索，接 OpenAI 和 Anthropic 的接口。</span></p>
     </div>
     <div class="rv" style="--d:3">
       <h3><span lang="en">Web &amp; design</span><span lang="zh-CN">网页与设计</span></h3>
